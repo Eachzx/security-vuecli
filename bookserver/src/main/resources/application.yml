@@ -1,0 +1,22 @@
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://39.105.78.173:3306/book?serverTimezone=GMT%2B8&characterEncoding=utf8&characterSetResults=utf8&autoReconnect=true&failOverReadOnly=false
+    username: root
+    password: 123456
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+logging:
+  level:
+    com.each.bookserver.mapper:
+      debug
+jwt:
+  tokenHeader: token
+  secret: mySecret
+  expired: true
+  expiration: 600000
+  head: "Bearer "
+  permitUris: "/register,/,/favicon.ico,/api/logManage/info/export,/download,/export,/api/product/exportAllDate,/produce/test,/testapi/**,/api/deviceOS/getDeviceOutputStatistics,/api/**,/export/**,/warehouseTest/**"
+server:
+  port: 8888

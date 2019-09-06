@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.each.bookserver.mapper.UsersMapper">
+    <resultMap id="BaseResultMap" type="com.each.bookserver.entity.Users">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>
+        <result column="sex" property="sex"/>
+        <result column="telephone" property="telephone"/>
+        <result column="address" property="address"/>
+        <result column="nativeplace" property="nativeplace"/>
+        <result column="jointime" property="jointime"/>
+    </resultMap>
+<select id="selectPageUsers" resultMap="BaseResultMap">
+    SELECT * FROM users
+    <where>
+        <if test="users.name != null and users.name != ''">
+            and name like CONCAT('%',#{users.name},'%')
+        </if>
+        <if test="users.telephone != null and users.telephone != ''">
+            and telephone=#{users.telephone}
+        </if>
+
+    </where>
+</select>
+
+</mapper>
